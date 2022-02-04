@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sales_order" resource="sales" engine="innodb" comment="Sales Order">
+        <column xsi:type="varchar" name="account_manager" nullable="true" length="255" comment="Custom Order Attribute"/>
+    </table>
+    <table name="sales_order_grid" resource="sales" engine="innodb" comment="Sales Order">
+        <column xsi:type="varchar" name="account_manager" nullable="true" length="255" comment="Custom Order Attribute"/>
+    </table>
+    <table name="account_manager_mapping" resource="default" engine="innodb" comment="Account Manager Mapping">
+        <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="Record ID"/>
+        <column xsi:type="varchar" name="province" nullable="false" comment="Province"/>
+        <column xsi:type="varchar" name="account_manager" nullable="false" comment="Account Manager"/>
+        <constraint xsi:type="primary" name="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceID="ACCOUNT_MANAGER_MAPPING_INDEXES" indexType="fulltext">
+            <column name="province"/>
+            <column name="account_manager"/>
+        </index>
+    </table>
+</schema>
